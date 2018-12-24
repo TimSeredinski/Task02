@@ -1,50 +1,55 @@
 package by.tc.task01.main;
 
-import static by.tc.task01.entity.criteria.SearchCriteria.*;
-
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.ServiceFactory;
 
+import static by.tc.task01.entity.criteria.SearchCriteria.Oven;
+import static by.tc.task01.entity.criteria.SearchCriteria.TabletPC;
+import static by.tc.task01.entity.criteria.SearchCriteria.Speakers;
+
 public class Main {
 
-	public static void main(String[] args) {
-		Appliance appliance;
+    public static void main(String[] args) {
 
-		ServiceFactory factory = ServiceFactory.getInstance();
-		ApplianceService service = factory.getApplianceService();
 
-		//////////////////////////////////////////////////////////////////
+        Appliance appliance;
 
-		Criteria<Oven> criteriaOven = new Criteria<Oven>();
-		criteriaOven.add(Oven.CAPACITY, 3);
+        ServiceFactory factory = ServiceFactory.getInstance();
+        ApplianceService service = factory.getApplianceService();
 
-		appliance = service.find(criteriaOven);
+        //////////////////////////////////////////////////////////////////
 
-		PrintApplianceInfo.print(appliance);
+        Criteria<Oven> criteriaOven = new Criteria<Oven>(Oven.class);
+        criteriaOven.add(Oven.CAPACITY, 33);
+        criteriaOven.add(Oven.DEPTH, 60);
 
-		//////////////////////////////////////////////////////////////////
+        appliance = service.find(criteriaOven);
 
-		criteriaOven = new Criteria<Oven>();
-		criteriaOven.add(Oven.HEIGHT, 200);
-		criteriaOven.add(Oven.DEPTH, 300);
+        PrintApplianceInfo.print(appliance);
 
-		appliance = service.find(criteriaOven);
+        //////////////////////////////////////////////////////////////////
 
-		PrintApplianceInfo.print(appliance);
+        Criteria<Speakers> criteriaSpeakers = new Criteria<Speakers>(Speakers.class);
+        criteriaSpeakers.add(Speakers.POWER_CONSUMPTION, 15);
+        criteriaSpeakers.add(Speakers.CORD_LENGTH, 2);
 
-		//////////////////////////////////////////////////////////////////
-		
-		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
-		criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
-		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
-		criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
+        appliance = service.find(criteriaSpeakers);
 
-		appliance = service.find(criteriaOven);
+        PrintApplianceInfo.print(appliance);
 
-		PrintApplianceInfo.print(appliance);
+        //////////////////////////////////////////////////////////////////
 
-	}
+        Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>(TabletPC.class);
+        criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
+        criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
+        criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
+
+        appliance = service.find(criteriaTabletPC);
+
+        PrintApplianceInfo.print(appliance);
+
+    }
 
 }
