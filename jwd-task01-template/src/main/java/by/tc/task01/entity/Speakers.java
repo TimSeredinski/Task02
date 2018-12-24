@@ -15,6 +15,9 @@ public class Speakers extends Appliance{
         this.cordLength = cordLength;
     }
 
+    public Speakers() {
+    }
+
     public int getPowerConsumption() {
         return powerConsumption;
     }

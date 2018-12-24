@@ -16,6 +16,9 @@ public class KitchenAppliance extends Appliance {
         this.capacity = capacity;
     }
 
+    public KitchenAppliance() {
+    }
+
     public int getCapacity() {
 
         return capacity;

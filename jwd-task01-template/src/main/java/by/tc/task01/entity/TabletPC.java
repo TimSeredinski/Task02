@@ -12,6 +12,9 @@ public class TabletPC extends ComputerAppliance {
         this.color = color;
     }
 
+    public TabletPC() {
+    }
+
     public int getFlashMemoryCapacity() {
         return flashMemoryCapacity;
     }

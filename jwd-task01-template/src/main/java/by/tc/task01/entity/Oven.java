@@ -5,6 +5,10 @@ public class Oven extends KitchenAppliance {
 
     private int depth;
 
+    public Oven() {
+        super();
+    }
+
     public Oven(int powerConsumption, int weight, int height, int width, int capacity, int depth) {
         super(powerConsumption, weight, height, width, capacity);
         this.depth = depth;

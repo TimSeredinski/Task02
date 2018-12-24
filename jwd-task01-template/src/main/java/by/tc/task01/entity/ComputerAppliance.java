@@ -12,6 +12,9 @@ public class ComputerAppliance extends Appliance{
         this.displayInches = displayInches;
     }
 
+    public ComputerAppliance() {
+    }
+
     public int getBatteryCapacity() {
 
         return batteryCapacity;

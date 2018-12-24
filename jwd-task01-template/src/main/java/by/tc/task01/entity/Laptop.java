@@ -15,6 +15,10 @@ public class Laptop extends ComputerAppliance {
         this.CPU = CPU;
     }
 
+    public Laptop() {
+        super();
+    }
+
     public String getOS() {
         return OS;
     }

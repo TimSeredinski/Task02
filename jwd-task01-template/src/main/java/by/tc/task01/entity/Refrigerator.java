@@ -9,6 +9,9 @@ public class Refrigerator extends KitchenAppliance {
         this.freezerCapacity = freezerCapacity;
     }
 
+    public Refrigerator() {
+    }
+
 
     public int getFreezerCapacity() {
         return freezerCapacity;

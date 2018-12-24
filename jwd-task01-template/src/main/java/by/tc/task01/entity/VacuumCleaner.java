@@ -20,6 +20,9 @@ public class VacuumCleaner extends Appliance{
         this.cleaningWidth = cleaningWidth;
     }
 
+    public VacuumCleaner() {
+    }
+
     public int getPowerConsumption() {
         return powerConsumption;
     }
