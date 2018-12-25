@@ -1,31 +1,29 @@
 package by.tc.task01.entity;
 
+import java.util.List;
+
 public class KitchenAppliance extends Appliance {
 
     private int powerConsumption;
     private int weight;
     private int height;
     private int width;
-    private int capacity;
 
-    public KitchenAppliance(int powerConsumption, int weight, int height, int width, int capacity) {
+    public KitchenAppliance(int powerConsumption, int weight, int height, int width) {
         this.powerConsumption = powerConsumption;
         this.weight = weight;
         this.height = height;
         this.width = width;
-        this.capacity = capacity;
+    }
+
+    public KitchenAppliance(List<Integer> integers){
+        powerConsumption = integers.get(0);
+        weight = integers.get(1);
+        height = integers.get(4);
+        width = integers.get(5);
     }
 
     public KitchenAppliance() {
-    }
-
-    public int getCapacity() {
-
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
     }
 
     public int getPowerConsumption() {

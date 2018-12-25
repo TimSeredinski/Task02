@@ -1,18 +1,37 @@
 package by.tc.task01.entity;
 
+import java.util.List;
+
 public class TabletPC extends ComputerAppliance {
 	// you may add your own code here
 
+    private int displayInches;
     private int flashMemoryCapacity;
     private String color;
 
     public TabletPC(int batteryCapacity, int memoryROM, int displayInches, int flashMemoryCapacity, String color) {
-        super(batteryCapacity, memoryROM, displayInches);
+        super(batteryCapacity, memoryROM);
+        this.displayInches = displayInches;
         this.flashMemoryCapacity = flashMemoryCapacity;
         this.color = color;
     }
 
+    public TabletPC(List<Integer> integers, List<String> strings){
+        super(integers);
+        displayInches = integers.get(1);
+        flashMemoryCapacity = integers.get(3);
+        color = strings.get(0);
+    }
+
     public TabletPC() {
+    }
+
+    public int getDisplayInches() {
+        return displayInches;
+    }
+
+    public void setDisplayInches(int displayInches) {
+        this.displayInches = displayInches;
     }
 
     public int getFlashMemoryCapacity() {

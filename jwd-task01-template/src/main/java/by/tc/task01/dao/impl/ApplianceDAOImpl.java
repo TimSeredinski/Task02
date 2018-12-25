@@ -55,8 +55,8 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
     private <E> String getRegEx(Criteria<E> criteria, String str) {
         StringBuilder regEx = new StringBuilder();
-        Iterator iteratorForKeys = criteria.getMap().keySet().iterator();
-        Iterator iteratorForValues = criteria.getMap().values().iterator();
+        Iterator iteratorForKeys = criteria.getCriteria().keySet().iterator();
+        Iterator iteratorForValues = criteria.getCriteria().values().iterator();
         regEx.append(".*");
         while (iteratorForKeys.hasNext()) {
             String key = iteratorForKeys.next().toString();
@@ -126,26 +126,31 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         return null;
     }
 
-    private <E> Map<E, Object> getMapOfAppliance(List<String> arrayOfValues) {
-        ApplianceMap<E> applianceMap = new ApplianceMap<>();
+    private <E> Appliance getMapOfAppliance(List<String> arrayOfValues) {
         Pattern pattern = Pattern.compile("^\\d+$");
         Matcher matcher;
         List<Integer> arrayOfIntegerValues = new ArrayList<>();
+        List<String> arrayOfStringValues = new ArrayList<>();
         for(String s : arrayOfValues){
             matcher = pattern.matcher(s);
-            while (matcher.find()){
-                System.out.println(s);
+            if (matcher.find()){
+                arrayOfIntegerValues.add(Integer.valueOf(s));
+            }
+            else {
+                arrayOfStringValues.add(s);
             }
         }
+        System.out.println("Strings " + arrayOfStringValues);
+        System.out.println("Integers " + arrayOfIntegerValues);
         return null;
     }
 
     private List<String> getArrayOfValues(String str) {
         List<String> s = new ArrayList<>();
-        Pattern pattern = Pattern.compile("=[0-9a-zA-Z-]{0,10}[,|\\s|;]?");
+        Pattern pattern = Pattern.compile("=[0-9a-zA-Z-\\.]{0,10}[,|\\s|;]?");
         Matcher matcher = pattern.matcher(str);
         while (matcher.find()){
-            s.add(matcher.group().trim().replaceAll("[^0-9a-zA-Z-]", ""));
+            s.add(matcher.group().trim().replaceAll("[^0-9a-zA-Z-\\.]", ""));
         }
         return s;
     }

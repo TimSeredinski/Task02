@@ -1,5 +1,7 @@
 package by.tc.task01.entity;
 
+import java.util.List;
+
 public class VacuumCleaner extends Appliance{
 	// you may add your own code here
 
@@ -11,13 +13,21 @@ public class VacuumCleaner extends Appliance{
     private int cleaningWidth;
 
     public VacuumCleaner(int powerConsumption, String filterType, String bagType, String wandType, int motorSpeedRegulation, int cleaningWidth) {
-
         this.powerConsumption = powerConsumption;
         this.filterType = filterType;
         this.bagType = bagType;
         this.wandType = wandType;
         this.motorSpeedRegulation = motorSpeedRegulation;
         this.cleaningWidth = cleaningWidth;
+    }
+
+    public VacuumCleaner(List<Integer> integers, List<String> strings){
+        powerConsumption = integers.get(0);
+        filterType = strings.get(0);
+        bagType = strings.get(1);
+        wandType = strings.get(2);
+        motorSpeedRegulation = integers.get(1);
+        cleaningWidth = integers.get(2);
     }
 
     public VacuumCleaner() {

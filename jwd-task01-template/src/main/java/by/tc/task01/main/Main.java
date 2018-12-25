@@ -2,12 +2,9 @@ package by.tc.task01.main;
 
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
+import by.tc.task01.entity.criteria.SearchCriteria.*;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.ServiceFactory;
-
-import static by.tc.task01.entity.criteria.SearchCriteria.Oven;
-import static by.tc.task01.entity.criteria.SearchCriteria.TabletPC;
-import static by.tc.task01.entity.criteria.SearchCriteria.VacuumCleaner;
 
 public class Main {
 
@@ -31,11 +28,31 @@ public class Main {
 
         //////////////////////////////////////////////////////////////////
 
-        Criteria<VacuumCleaner> criteriaSpeakers = new Criteria<VacuumCleaner>(VacuumCleaner.class);
-        criteriaSpeakers.add(VacuumCleaner.POWER_CONSUMPTION, 100);
-        criteriaSpeakers.add(VacuumCleaner.WAND_TYPE, "all-in-one");
+        Criteria<Laptop> criteriaLaptop = new Criteria<Laptop>(Laptop.class);
+        criteriaLaptop.add(Laptop.CPU, 1.2);
+        criteriaLaptop.add(Laptop.DISPLAY_INCHS, 18);
 
-        appliance = service.find(criteriaSpeakers);
+        appliance = service.find(criteriaLaptop);
+
+        PrintApplianceInfo.print(appliance);
+
+        //////////////////////////////////////////////////////////////////
+
+        Criteria<Refrigerator> criteriaRefrigerator = new Criteria<Refrigerator>(Refrigerator.class);
+        criteriaRefrigerator.add(Refrigerator.POWER_CONSUMPTION, 200);
+        criteriaRefrigerator.add(Refrigerator.FREEZER_CAPACITY, 15);
+
+        appliance = service.find(criteriaRefrigerator);
+
+        PrintApplianceInfo.print(appliance);
+
+        //////////////////////////////////////////////////////////////////
+
+        Criteria<VacuumCleaner> criteriaVacuumCleaner = new Criteria<VacuumCleaner>(VacuumCleaner.class);
+        criteriaVacuumCleaner.add(VacuumCleaner.POWER_CONSUMPTION, 100);
+        criteriaVacuumCleaner.add(VacuumCleaner.WAND_TYPE, "all-in-one");
+
+        appliance = service.find(criteriaVacuumCleaner);
 
         PrintApplianceInfo.print(appliance);
 
@@ -47,6 +64,16 @@ public class Main {
         criteriaTabletPC.add(TabletPC.COLOR, "blue");
 
         appliance = service.find(criteriaTabletPC);
+
+        PrintApplianceInfo.print(appliance);
+
+        //////////////////////////////////////////////////////////////////
+
+        Criteria<Speakers> criteriaSpeakers = new Criteria<Speakers>(Speakers.class);
+        criteriaSpeakers.add(Speakers.POWER_CONSUMPTION, 17);
+        criteriaSpeakers.add(Speakers.FREQUENCY_RANGE, "2-3.5");
+
+        appliance = service.find(criteriaSpeakers);
 
         PrintApplianceInfo.print(appliance);
 

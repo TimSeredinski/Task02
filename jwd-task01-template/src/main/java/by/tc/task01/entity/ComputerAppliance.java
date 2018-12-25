@@ -1,22 +1,26 @@
 package by.tc.task01.entity;
 
+import java.util.List;
+
 public class ComputerAppliance extends Appliance{
 
     private int batteryCapacity;
     private int memoryROM;
-    private int displayInches;
 
-    public ComputerAppliance(int batteryCapacity, int memoryROM, int displayInches) {
+    public ComputerAppliance(int batteryCapacity, int memoryROM) {
         this.batteryCapacity = batteryCapacity;
         this.memoryROM = memoryROM;
-        this.displayInches = displayInches;
+    }
+
+    public ComputerAppliance(List<Integer> integers){
+        batteryCapacity = integers.get(0);
+        memoryROM = integers.get(2);
     }
 
     public ComputerAppliance() {
     }
 
     public int getBatteryCapacity() {
-
         return batteryCapacity;
     }
 
@@ -32,11 +36,4 @@ public class ComputerAppliance extends Appliance{
         this.memoryROM = memoryROM;
     }
 
-    public int getDisplayInches() {
-        return displayInches;
-    }
-
-    public void setDisplayInches(int displayInches) {
-        this.displayInches = displayInches;
-    }
 }

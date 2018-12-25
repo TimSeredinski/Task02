@@ -1,14 +1,21 @@
 package by.tc.task01.entity.criteria;
 
-import by.tc.task01.entity.ApplianceMap;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Criteria<E> extends ApplianceMap {
+public class Criteria<E>{
 
 	//Class searchType
+	private Map<E, Object> criteria = new LinkedHashMap<>();
 	private final Class<E> searchType;
+
+	public void add(E searchCriteria, Object value) {
+		criteria.put(searchCriteria, value);
+	}
+
+	public Map<E, Object> getCriteria() {
+		return criteria;
+	}
 
 	public Criteria(Class<E> cls) {
 		searchType = cls;
