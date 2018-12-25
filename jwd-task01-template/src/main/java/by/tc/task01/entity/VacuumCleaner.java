@@ -3,7 +3,6 @@ package by.tc.task01.entity;
 import java.util.List;
 
 public class VacuumCleaner extends Appliance{
-	// you may add your own code here
 
     private int powerConsumption;
     private String filterType;
@@ -81,4 +80,14 @@ public class VacuumCleaner extends Appliance{
         this.cleaningWidth = cleaningWidth;
     }
 
+    @Override
+    public String toString() {
+        return "VacuumCleaner: " +
+                "powerConsumption=" + powerConsumption +
+                ", filterType=" + filterType +
+                ", bagType=" + bagType +
+                ", wandType=" + wandType+
+                ", motorSpeedRegulation=" + motorSpeedRegulation +
+                ", cleaningWidth=" + cleaningWidth;
+    }
 }

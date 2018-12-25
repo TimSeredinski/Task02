@@ -6,12 +6,14 @@ import by.tc.task01.entity.criteria.SearchCriteria.*;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.ServiceFactory;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
 
-        Appliance appliance;
+        List<Appliance> appliances;
 
         ServiceFactory factory = ServiceFactory.getInstance();
         ApplianceService service = factory.getApplianceService();
@@ -22,9 +24,9 @@ public class Main {
         criteriaOven.add(Oven.CAPACITY, 33);
         criteriaOven.add(Oven.DEPTH, 60);
 
-        appliance = service.find(criteriaOven);
+        appliances = service.find(criteriaOven);
 
-        PrintApplianceInfo.print(appliance);
+        PrintApplianceInfo.print(appliances);
 
         //////////////////////////////////////////////////////////////////
 
@@ -32,9 +34,9 @@ public class Main {
         criteriaLaptop.add(Laptop.CPU, 1.2);
         criteriaLaptop.add(Laptop.DISPLAY_INCHS, 18);
 
-        appliance = service.find(criteriaLaptop);
+        appliances = service.find(criteriaLaptop);
 
-        PrintApplianceInfo.print(appliance);
+        PrintApplianceInfo.print(appliances);
 
         //////////////////////////////////////////////////////////////////
 
@@ -42,9 +44,9 @@ public class Main {
         criteriaRefrigerator.add(Refrigerator.POWER_CONSUMPTION, 200);
         criteriaRefrigerator.add(Refrigerator.FREEZER_CAPACITY, 15);
 
-        appliance = service.find(criteriaRefrigerator);
+        appliances = service.find(criteriaRefrigerator);
 
-        PrintApplianceInfo.print(appliance);
+        PrintApplianceInfo.print(appliances);
 
         //////////////////////////////////////////////////////////////////
 
@@ -52,20 +54,20 @@ public class Main {
         criteriaVacuumCleaner.add(VacuumCleaner.POWER_CONSUMPTION, 100);
         criteriaVacuumCleaner.add(VacuumCleaner.WAND_TYPE, "all-in-one");
 
-        appliance = service.find(criteriaVacuumCleaner);
+        appliances = service.find(criteriaVacuumCleaner);
 
-        PrintApplianceInfo.print(appliance);
+        PrintApplianceInfo.print(appliances);
 
         //////////////////////////////////////////////////////////////////
 
         Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>(TabletPC.class);
-        criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
+        criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 15);
         criteriaTabletPC.add(TabletPC.MEMORY_ROM, 8000);
-        criteriaTabletPC.add(TabletPC.COLOR, "blue");
+        criteriaTabletPC.add(TabletPC.COLOR, "red");
 
-        appliance = service.find(criteriaTabletPC);
+        appliances = service.find(criteriaTabletPC);
 
-        PrintApplianceInfo.print(appliance);
+        PrintApplianceInfo.print(appliances);
 
         //////////////////////////////////////////////////////////////////
 
@@ -73,9 +75,9 @@ public class Main {
         criteriaSpeakers.add(Speakers.POWER_CONSUMPTION, 17);
         criteriaSpeakers.add(Speakers.FREQUENCY_RANGE, "2-3.5");
 
-        appliance = service.find(criteriaSpeakers);
+        appliances = service.find(criteriaSpeakers);
 
-        PrintApplianceInfo.print(appliance);
+        PrintApplianceInfo.print(appliances);
 
     }
 

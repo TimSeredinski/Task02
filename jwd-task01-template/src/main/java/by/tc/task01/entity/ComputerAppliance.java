@@ -14,7 +14,7 @@ public class ComputerAppliance extends Appliance{
 
     public ComputerAppliance(List<Integer> integers){
         batteryCapacity = integers.get(0);
-        memoryROM = integers.get(2);
+        memoryROM = integers.get(1);
     }
 
     public ComputerAppliance() {

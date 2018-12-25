@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class Criteria<E>{
 
-	//Class searchType
 	private Map<E, Object> criteria = new LinkedHashMap<>();
 	private final Class<E> searchType;
 
@@ -24,7 +23,5 @@ public class Criteria<E>{
 	public Class<E> getSearchType() {
 		return searchType;
 	}
-
-	// you may add your own code here
 
 }

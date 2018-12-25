@@ -3,7 +3,6 @@ package by.tc.task01.entity;
 import java.util.List;
 
 public class Oven extends KitchenAppliance {
-    // you may add your own code here
 
     private int capacity;
     private int depth;
@@ -18,7 +17,7 @@ public class Oven extends KitchenAppliance {
         this.capacity = capacity;
     }
 
-    public Oven(List<Integer> integers, List<String> strings){
+    public Oven(List<Integer> integers, List<String> strings) {
         super(integers);
         capacity = integers.get(2);
         depth = integers.get(3);
@@ -38,5 +37,16 @@ public class Oven extends KitchenAppliance {
 
     public void setDepth(int depth) {
         this.depth = depth;
+    }
+
+    @Override
+    public String toString() {
+        return "Oven: " +
+                "powerConsumption=" + getPowerConsumption() +
+                ", weight=" + getWeight() +
+                ", height=" + getHeight() +
+                ", width=" + getWidth() +
+                ", capacity=" + capacity +
+                ", depth=" + depth;
     }
 }

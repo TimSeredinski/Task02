@@ -21,10 +21,9 @@ public class ApplianceDAOImpl implements ApplianceDAO {
     //замечание: файл читается каждый раз при обращении к методу find
 
     @Override
-    public <E> Appliance find(Criteria<E> criteria) {
+    public <E> List<Appliance> find(Criteria<E> criteria) {
         List<Appliance> appliances = new ArrayList<>();
         String className = criteria.getSearchType().getName();
-        //System.out.println(criteria.getSearchType().getClass().);
         className = className.substring(className.lastIndexOf("$") + 1);
         Pattern pattern = Pattern.compile(className + " : .*");
         Matcher matcher;
@@ -41,19 +40,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String regularExpression = getRegEx(criteria, result.get(0));
+        String regularExpression = getRegEx(criteria);
         System.out.println(regularExpression);
-
         result = getCorrectStringOfAppliance(result, regularExpression);
         System.out.println(result);
         for (String str : result) {
             appliances.add(createApplianceFromString(str, className));
         }
-        System.out.println();
-        return null;
+        return appliances;
     }
 
-    private <E> String getRegEx(Criteria<E> criteria, String str) {
+    private <E> String getRegEx(Criteria<E> criteria) {
         StringBuilder regEx = new StringBuilder();
         Iterator iteratorForKeys = criteria.getCriteria().keySet().iterator();
         Iterator iteratorForValues = criteria.getCriteria().values().iterator();
@@ -80,53 +77,13 @@ public class ApplianceDAOImpl implements ApplianceDAO {
     }
 
     private <E> Appliance createApplianceFromString(String str, String className) {
-        Appliance appliance;
         List<String> arrayOfValues = getArrayOfValues(str);
         System.out.println(arrayOfValues);
-        getMapOfAppliance(arrayOfValues);
-//        switch (className) {
-//            case ("Oven"):
-//                appliance = new Oven();
-//                String[] arrayOfOvenEnums = Arrays.stream(SearchCriteria.Oven.values()).map(Enum::name)
-//                        .collect(Collectors.toList()).toArray(new String[0]);
-//                parseStringWithEnum(str, arrayOfOvenEnums, appliance);
-//                break;
-//            case ("Laptop"):
-//                appliance = new Laptop();
-//                String[] arrayOfLaptopEnums = Arrays.stream(SearchCriteria.Laptop.values()).map(Enum::name)
-//                        .collect(Collectors.toList()).toArray(new String[0]);
-//                parseStringWithEnum(str, arrayOfLaptopEnums, appliance);
-//                break;
-//            case ("Speakers"):
-//                appliance = new Speakers();
-//                String[] arrayOfSpeakersEnums = Arrays.stream(SearchCriteria.Speakers.values()).map(Enum::name)
-//                        .collect(Collectors.toList()).toArray(new String[0]);
-//                parseStringWithEnum(str, arrayOfSpeakersEnums, appliance);
-//                break;
-//            case ("Refrigerator"):
-//                appliance = new Refrigerator();
-//                String[] arrayOfRefrigeratorEnums = Arrays.stream(SearchCriteria.Refrigerator.values()).map(Enum::name)
-//                        .collect(Collectors.toList()).toArray(new String[0]);
-//                parseStringWithEnum(str, arrayOfRefrigeratorEnums, appliance);
-//                break;
-//            case ("TabletPC"):
-//                appliance = new TabletPC();
-//                String[] arrayOfTabletPCEnums = Arrays.stream(SearchCriteria.TabletPC.values()).map(Enum::name)
-//                        .collect(Collectors.toList()).toArray(new String[0]);
-//                parseStringWithEnum(str, arrayOfTabletPCEnums, appliance);
-//                break;
-//            case ("VacuumCleaner"):
-//                appliance = new VacuumCleaner();
-//                String[] arrayOfVacuumCleanerEnums = Arrays.stream(SearchCriteria.VacuumCleaner.values()).map(Enum::name)
-//                        .collect(Collectors.toList()).toArray(new String[0]);
-//                parseStringWithEnum(str, arrayOfVacuumCleanerEnums, appliance);
-//                break;
-//        }
-
-        return null;
+        return getApplianceFromStringArrayOfValues(arrayOfValues, className);
     }
 
-    private <E> Appliance getMapOfAppliance(List<String> arrayOfValues) {
+    private <E> Appliance getApplianceFromStringArrayOfValues(List<String> arrayOfValues, String className) {
+        Appliance appliance = null;
         Pattern pattern = Pattern.compile("^\\d+$");
         Matcher matcher;
         List<Integer> arrayOfIntegerValues = new ArrayList<>();
@@ -142,7 +99,27 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         }
         System.out.println("Strings " + arrayOfStringValues);
         System.out.println("Integers " + arrayOfIntegerValues);
-        return null;
+        switch (className) {
+            case ("Oven"):
+                appliance = new Oven(arrayOfIntegerValues,arrayOfStringValues);
+                break;
+            case ("Laptop"):
+                appliance = new Laptop(arrayOfIntegerValues,arrayOfStringValues);
+                break;
+            case ("Speakers"):
+                appliance = new Speakers(arrayOfIntegerValues,arrayOfStringValues);
+                break;
+            case ("Refrigerator"):
+                appliance = new Refrigerator(arrayOfIntegerValues,arrayOfStringValues);
+                break;
+            case ("TabletPC"):
+                appliance = new TabletPC(arrayOfIntegerValues,arrayOfStringValues);
+                break;
+            case ("VacuumCleaner"):
+                appliance = new VacuumCleaner(arrayOfIntegerValues,arrayOfStringValues);
+                break;
+        }
+        return appliance;
     }
 
     private List<String> getArrayOfValues(String str) {
@@ -155,8 +132,4 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         return s;
     }
 
-
 }
-
-
-//you may add your own new classes

@@ -3,7 +3,6 @@ package by.tc.task01.entity;
 import java.util.List;
 
 public class TabletPC extends ComputerAppliance {
-	// you may add your own code here
 
     private int displayInches;
     private int flashMemoryCapacity;
@@ -48,5 +47,14 @@ public class TabletPC extends ComputerAppliance {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "TabletPC: " + "batteryCapacity=" + getBatteryCapacity() +
+                ", displayInches=" + displayInches +
+                ", memoryROM=" + getMemoryROM() +
+                ", flashMemoryCapacity=" + flashMemoryCapacity +
+                ", color=" + color;
     }
 }

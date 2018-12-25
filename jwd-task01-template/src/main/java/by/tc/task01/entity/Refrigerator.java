@@ -3,7 +3,7 @@ package by.tc.task01.entity;
 import java.util.List;
 
 public class Refrigerator extends KitchenAppliance {
-    // you may add your own code here
+
     private int freezerCapacity;
     private int overallCapacity;
 
@@ -36,5 +36,16 @@ public class Refrigerator extends KitchenAppliance {
 
     public void setFreezerCapacity(int freezerCapacity) {
         this.freezerCapacity = freezerCapacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Refrigerator: " +
+                "powerConsumption=" + getPowerConsumption() +
+                ", weight=" + getWeight() +
+                ", freezerCapacity=" + freezerCapacity +
+                ", overallCapacity=" + overallCapacity +
+                ", height=" + getHeight() +
+                ", width=" + getWidth();
     }
 }

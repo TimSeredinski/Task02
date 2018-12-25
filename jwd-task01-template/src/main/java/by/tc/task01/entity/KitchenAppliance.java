@@ -16,7 +16,7 @@ public class KitchenAppliance extends Appliance {
         this.width = width;
     }
 
-    public KitchenAppliance(List<Integer> integers){
+    public KitchenAppliance(List<Integer> integers) {
         powerConsumption = integers.get(0);
         weight = integers.get(1);
         height = integers.get(4);
@@ -57,4 +57,5 @@ public class KitchenAppliance extends Appliance {
     public void setWidth(int width) {
         this.width = width;
     }
+
 }

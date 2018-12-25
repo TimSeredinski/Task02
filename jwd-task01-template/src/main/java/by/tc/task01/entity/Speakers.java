@@ -3,7 +3,6 @@ package by.tc.task01.entity;
 import java.util.List;
 
 public class Speakers extends Appliance{
-	// you may add your own code here
 
     private int powerConsumption;
     private int numberOfSpeakers;
@@ -57,5 +56,14 @@ public class Speakers extends Appliance{
 
     public void setCordLength(int cordLength) {
         this.cordLength = cordLength;
+    }
+
+    @Override
+    public String toString() {
+        return "Speakers: " +
+                "powerConsumption=" + powerConsumption +
+                ", numberOfSpeakers=" + numberOfSpeakers +
+                ", frequencyRange=" + frequencyRange +
+                ", cordLength=" + cordLength;
     }
 }
