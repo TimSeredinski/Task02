@@ -7,7 +7,7 @@ import by.tc.task01.service.ServiceFactory;
 
 import static by.tc.task01.entity.criteria.SearchCriteria.Oven;
 import static by.tc.task01.entity.criteria.SearchCriteria.TabletPC;
-import static by.tc.task01.entity.criteria.SearchCriteria.Speakers;
+import static by.tc.task01.entity.criteria.SearchCriteria.VacuumCleaner;
 
 public class Main {
 
@@ -31,9 +31,9 @@ public class Main {
 
         //////////////////////////////////////////////////////////////////
 
-        Criteria<Speakers> criteriaSpeakers = new Criteria<Speakers>(Speakers.class);
-        criteriaSpeakers.add(Speakers.POWER_CONSUMPTION, 15);
-        criteriaSpeakers.add(Speakers.CORD_LENGTH, 2);
+        Criteria<VacuumCleaner> criteriaSpeakers = new Criteria<VacuumCleaner>(VacuumCleaner.class);
+        criteriaSpeakers.add(VacuumCleaner.POWER_CONSUMPTION, 100);
+        criteriaSpeakers.add(VacuumCleaner.WAND_TYPE, "all-in-one");
 
         appliance = service.find(criteriaSpeakers);
 
@@ -43,8 +43,8 @@ public class Main {
 
         Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>(TabletPC.class);
         criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
-        criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
-        criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
+        criteriaTabletPC.add(TabletPC.MEMORY_ROM, 8000);
+        criteriaTabletPC.add(TabletPC.COLOR, "blue");
 
         appliance = service.find(criteriaTabletPC);
 

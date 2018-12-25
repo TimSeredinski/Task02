@@ -4,13 +4,13 @@ public class VacuumCleaner extends Appliance{
 	// you may add your own code here
 
     private int powerConsumption;
-    private char filterType;
+    private String filterType;
     private String bagType;
     private String wandType;
     private int motorSpeedRegulation;
     private int cleaningWidth;
 
-    public VacuumCleaner(int powerConsumption, char filterType, String bagType, String wandType, int motorSpeedRegulation, int cleaningWidth) {
+    public VacuumCleaner(int powerConsumption, String filterType, String bagType, String wandType, int motorSpeedRegulation, int cleaningWidth) {
 
         this.powerConsumption = powerConsumption;
         this.filterType = filterType;
@@ -31,11 +31,11 @@ public class VacuumCleaner extends Appliance{
         this.powerConsumption = powerConsumption;
     }
 
-    public char getFilterType() {
+    public String getFilterType() {
         return filterType;
     }
 
-    public void setFilterType(char filterType) {
+    public void setFilterType(String filterType) {
         this.filterType = filterType;
     }
 
