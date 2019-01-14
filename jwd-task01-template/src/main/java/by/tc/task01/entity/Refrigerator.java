@@ -13,7 +13,7 @@ public class Refrigerator extends KitchenAppliance {
         this.overallCapacity = overallCapacity;
     }
 
-    public Refrigerator(List<Integer> integers, List<String> strings){
+    public Refrigerator(List<Integer> integers, List<String> strings) {
         super(integers);
         freezerCapacity = integers.get(2);
         overallCapacity = integers.get(3);
@@ -36,6 +36,29 @@ public class Refrigerator extends KitchenAppliance {
 
     public void setFreezerCapacity(int freezerCapacity) {
         this.freezerCapacity = freezerCapacity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Refrigerator that = (Refrigerator) o;
+        if (Integer.compare(that.freezerCapacity, this.freezerCapacity) != 0) {
+            return false;
+        }
+        if (Double.compare(that.overallCapacity, this.overallCapacity) != 0) {
+            return false;
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 829;
+        result = prime * result + freezerCapacity;
+        result = prime * result + overallCapacity;
+        return result;
     }
 
     @Override

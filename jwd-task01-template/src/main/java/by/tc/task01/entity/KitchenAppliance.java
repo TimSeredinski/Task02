@@ -58,4 +58,34 @@ public class KitchenAppliance extends Appliance {
         this.width = width;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        KitchenAppliance that = (KitchenAppliance) o;
+        if (Integer.compare(that.powerConsumption, this.powerConsumption) != 0) {
+            return false;
+        }
+        if (Double.compare(that.weight, this.weight) != 0) {
+            return false;
+        }
+        if (Integer.compare(that.height, this.height) != 0) {
+            return false;
+        }
+        if (Double.compare(that.width, this.width) != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 829;
+        result = prime * result + powerConsumption;
+        result = prime * result + weight;
+        result = prime * result + height;
+        result = prime * result + width;
+        return result;
+    }
 }

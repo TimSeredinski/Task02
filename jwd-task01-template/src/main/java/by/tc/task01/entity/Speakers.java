@@ -2,7 +2,7 @@ package by.tc.task01.entity;
 
 import java.util.List;
 
-public class Speakers extends Appliance{
+public class Speakers extends Appliance {
 
     private int powerConsumption;
     private int numberOfSpeakers;
@@ -16,7 +16,7 @@ public class Speakers extends Appliance{
         this.cordLength = cordLength;
     }
 
-    public Speakers(List<Integer> integers, List<String> strings){
+    public Speakers(List<Integer> integers, List<String> strings) {
         powerConsumption = integers.get(0);
         numberOfSpeakers = integers.get(1);
         frequencyRange = strings.get(0);
@@ -56,6 +56,37 @@ public class Speakers extends Appliance{
 
     public void setCordLength(int cordLength) {
         this.cordLength = cordLength;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Speakers that = (Speakers) o;
+        if (Integer.compare(that.powerConsumption, this.powerConsumption) != 0) {
+            return false;
+        }
+        if (Double.compare(that.numberOfSpeakers, this.numberOfSpeakers) != 0) {
+            return false;
+        }
+        if (!(that.frequencyRange != null ? that.frequencyRange.equals(this.frequencyRange) : this.frequencyRange == null)) {
+            return false;
+        }
+        if (Double.compare(that.cordLength, this.cordLength) != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 829;
+        result = prime * result + powerConsumption;
+        result = prime * result + numberOfSpeakers;
+        result = prime * result + frequencyRange.length();
+        result = prime * result + cordLength;
+        return result;
     }
 
     @Override

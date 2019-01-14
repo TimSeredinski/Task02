@@ -61,6 +61,38 @@ public class Laptop extends ComputerAppliance {
         this.CPU = CPU;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Laptop that = (Laptop) o;
+        if (!(that.OS != null ? that.OS.equals(this.OS) : this.OS == null)) {
+            return false;
+        }
+        if (Integer.compare(that.systemMemory, this.systemMemory) != 0) {
+            return false;
+        }
+        if (Double.compare(that.CPU, this.CPU) != 0) {
+            return false;
+        }
+        if (Integer.compare(that.displayInchs, this.displayInchs) != 0) {
+            return false;
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 829;
+        result = prime * result + systemMemory;
+        result = prime * result + OS.length();
+        result = (int) (prime * result + CPU);
+        result = prime * result + displayInchs;
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Laptop: " + "batteryCapacity=" + getBatteryCapacity() +

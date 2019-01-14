@@ -15,7 +15,7 @@ public class TabletPC extends ComputerAppliance {
         this.color = color;
     }
 
-    public TabletPC(List<Integer> integers, List<String> strings){
+    public TabletPC(List<Integer> integers, List<String> strings) {
         super(integers);
         displayInches = integers.get(1);
         flashMemoryCapacity = integers.get(3);
@@ -47,6 +47,33 @@ public class TabletPC extends ComputerAppliance {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TabletPC that = (TabletPC) o;
+        if (!(that.color != null ? that.color.equals(this.color) : this.color == null)) {
+            return false;
+        }
+        if (Integer.compare(that.displayInches, this.displayInches) != 0) {
+            return false;
+        }
+        if (Integer.compare(that.flashMemoryCapacity, this.flashMemoryCapacity) != 0) {
+            return false;
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 829;
+        result = prime * result + displayInches;
+        result = prime * result + color.length();
+        result = prime * result + flashMemoryCapacity;
+        return result;
     }
 
     @Override

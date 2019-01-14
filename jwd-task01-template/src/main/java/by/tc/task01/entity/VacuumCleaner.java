@@ -2,7 +2,7 @@ package by.tc.task01.entity;
 
 import java.util.List;
 
-public class VacuumCleaner extends Appliance{
+public class VacuumCleaner extends Appliance {
 
     private int powerConsumption;
     private String filterType;
@@ -20,7 +20,7 @@ public class VacuumCleaner extends Appliance{
         this.cleaningWidth = cleaningWidth;
     }
 
-    public VacuumCleaner(List<Integer> integers, List<String> strings){
+    public VacuumCleaner(List<Integer> integers, List<String> strings) {
         powerConsumption = integers.get(0);
         filterType = strings.get(0);
         bagType = strings.get(1);
@@ -81,12 +81,51 @@ public class VacuumCleaner extends Appliance{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VacuumCleaner that = (VacuumCleaner) o;
+        if (!(that.filterType != null ? that.filterType.equals(this.filterType) : this.filterType == null)) {
+            return false;
+        }
+        if (!(that.bagType != null ? that.bagType.equals(this.bagType) : this.bagType == null)) {
+            return false;
+        }
+        if (!(that.wandType != null ? that.wandType.equals(this.wandType) : this.wandType == null)) {
+            return false;
+        }
+        if (Integer.compare(that.powerConsumption, this.powerConsumption) != 0) {
+            return false;
+        }
+        if (Double.compare(that.motorSpeedRegulation, this.motorSpeedRegulation) != 0) {
+            return false;
+        }
+        if (Integer.compare(that.cleaningWidth, this.cleaningWidth) != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 829;
+        result = prime * result + powerConsumption;
+        result = prime * result + filterType.length();
+        result = prime * result + bagType.length();
+        result = prime * result + wandType.length();
+        result = prime * result + motorSpeedRegulation;
+        result = prime * result + cleaningWidth;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "VacuumCleaner: " +
                 "powerConsumption=" + powerConsumption +
                 ", filterType=" + filterType +
                 ", bagType=" + bagType +
-                ", wandType=" + wandType+
+                ", wandType=" + wandType +
                 ", motorSpeedRegulation=" + motorSpeedRegulation +
                 ", cleaningWidth=" + cleaningWidth;
     }
