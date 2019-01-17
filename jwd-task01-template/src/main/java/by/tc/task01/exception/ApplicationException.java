@@ -1,7 +1,6 @@
 package by.tc.task01.exception;
 
-public class ApplicationException extends Exception{
-
+public class ApplicationException extends Exception {
 
     public ApplicationException() {
         super();
@@ -17,6 +16,5 @@ public class ApplicationException extends Exception{
 
     public ApplicationException(Throwable cause) {
         super(cause);
-
     }
 }

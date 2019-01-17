@@ -16,6 +16,5 @@ public class InvalidCriteriaException extends ApplicationException {
 
     public InvalidCriteriaException(Throwable cause) {
         super(cause);
-
     }
 }
